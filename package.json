@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "Utility functions to handle multilingual URLs",
     "author": "André Marques andremarquesdev.com",
-    "license": "ISC",
+    "license": "MIT",
     "engines": {
         "node": "12",
         "yarn": "1"
