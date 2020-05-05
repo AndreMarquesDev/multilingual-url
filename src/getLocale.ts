@@ -1,10 +1,11 @@
 import Cookies from 'js-cookie';
-import { getLangFromUrl, urlHasLocale } from './urlValidation';
+import { getLangFromUrl } from './urlValidation';
 import { hasNavigator } from './generic';
 import { IPrismicCultures } from './typings';
 
 export const getInitialLocale = (defaultLocale: string, locales: string[]): string => {
     const isLocale = (tested: string): boolean => locales.some(locale => locale === tested);
+    const urlHasLocale = !!getLangFromUrl(locales).length;
 
     if (!hasNavigator) {
         return defaultLocale;
