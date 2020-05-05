@@ -1,6 +1,6 @@
 {
     "name": "multilingual-url",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Utility functions to handle multilingual URLs",
     "author": "André Marques andremarquesdev.com",
     "license": "MIT",
