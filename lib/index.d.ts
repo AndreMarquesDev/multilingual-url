@@ -1,5 +1,4 @@
-export type { Locale, IPrismicCultures } from './typings/index';
-export * from './config';
-export * from './generic';
-export * from './getLocale';
-export * from './urlValidation';
+export type { IPrismicCultures } from './typings/index';
+export { isClientSide } from './generic';
+export { getInitialLocale, getPrismicLocale } from './getLocale';
+export { getRemainingLang, urlHasLocale } from './urlValidation';

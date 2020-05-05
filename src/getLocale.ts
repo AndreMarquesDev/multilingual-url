@@ -1,22 +1,18 @@
 import Cookies from 'js-cookie';
 import { getLangFromUrl, urlHasLocale } from './urlValidation';
-import { Locale } from './typings/index';
-import { defaultLocale, prismicCultures, locales } from './config';
 import { hasNavigator } from './generic';
+import { IPrismicCultures } from './typings';
 
-const isLocale = (tested: string): tested is Locale => locales.some(locale => locale === tested);
+export const getInitialLocale = (defaultLocale: string, locales: string[]): string => {
+    const isLocale = (tested: string): boolean => locales.some(locale => locale === tested);
 
-export const getInitialLocale = (): Locale => {
     if (!hasNavigator) {
-        console.log('Read lang from default locale (no navigator)');
-
         return defaultLocale;
     }
 
     if (urlHasLocale) {
-        const locale = getLangFromUrl[0];
+        const locale = getLangFromUrl(locales)[0];
 
-        console.log('Read lang from url, will set cookie', locale);
         Cookies.set('lang', locale, { expires: 60 });
 
         return locale;
@@ -25,7 +21,6 @@ export const getInitialLocale = (): Locale => {
     const localSetting = Cookies.get('lang');
 
     if (localSetting && isLocale(localSetting)) {
-        console.log('Read lang from cookie');
 
         return localSetting;
     }
@@ -33,17 +28,13 @@ export const getInitialLocale = (): Locale => {
     const [browserLanguage] = navigator.language.split('-');
 
     if (isLocale(browserLanguage)) {
-        console.log('Read lang from browser language');
-
         return browserLanguage;
     }
-
-    console.log('Read lang from default locale');
 
     return defaultLocale;
 };
 
-export const getPrismicLocale = (language: string | string[]): string => {
+export const getPrismicLocale = (language: string | string[], prismicCultures: IPrismicCultures[]): string => {
     const prismicLocale = prismicCultures.find(({ culture }) => culture === language);
 
     return prismicLocale?.locale || 'en-gb';
