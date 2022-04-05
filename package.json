@@ -1,12 +1,12 @@
 {
     "name": "multilingual-url",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Utility functions to handle multilingual URLs",
     "author": "André Marques andremarquesdev.com",
     "license": "MIT",
     "engines": {
-        "node": "12",
-        "yarn": "1"
+        "node": ">=12",
+        "yarn": ">=1"
     },
     "main": "index.js",
     "scripts": {
